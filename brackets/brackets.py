@@ -5,11 +5,11 @@ def are_brackets_valid(expression) -> bool:
     stack = []
     for ch in expression:
         if ch in bracket_open:
-            st.append(ch)
+            stack.append(ch)
         elif ch in bracket_close:
-            if len(st) > 0 and st[-1] == bracket_open[bracket_close.index(ch)]:
-                st.pop()
+            if len(stack) > 0 and stack[-1] == bracket_open[bracket_close.index(ch)]:
+                stack.pop()
             else:
                 return False
 
-    return len(st) == 0
+    return len(stack) == 0
