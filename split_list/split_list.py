@@ -9,7 +9,8 @@ def split_list(items: list) -> list:
 #         result.extend([[],[]])
 #     return result
 
-    return [items[:(split_index := (len(items) + 1) // 2)], items[split_index:]]
+    #return [items[:(split_index := (len(items) + 1) // 2)], items[split_index:]]
+    return [items[:(len(items) + 1) // 2], items[(len(items) + 1) // 2:]]
 
 if __name__ == "__main__":
     assert split_list([1, 2, 3]) == [[1, 2], [3]]
