@@ -24,3 +24,5 @@ def test_stressful_subject():
     assert is_stressful("I neeed HELP") == True, "asking for HELP in capital letters"
     assert is_stressful("asap help") == True, "has red words"
     assert is_stressful("UUUURGGGEEEEENT here") == True, "Has red word with repeating characters within"
+    assert is_stressful("Hello!Please") == False, "No red words, capitalization or !!! at the end"
+    assert is_stressful("Hello!!") == False, "Only 2 exclamation points"
