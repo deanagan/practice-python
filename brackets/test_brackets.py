@@ -12,3 +12,6 @@ def test_are_brackets_valid():
     assert are_brackets_valid("(3+{1-1)}") == False, "Mismatching brackets"
     assert are_brackets_valid("(((([[[{{{3}}}]]]]))))") == False, "Mismatching"
     assert are_brackets_valid("(((1+(1+1))))]") == False, "Extra closing at the end"
+    assert are_brackets_valid("]") == False, "closing at the end"
+    assert are_brackets_valid("(])") == False, "closing at the middle"
+    assert are_brackets_valid("](") == False, "bad pair"
