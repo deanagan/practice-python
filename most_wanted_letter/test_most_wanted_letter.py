@@ -10,20 +10,6 @@
 # Input: A text for analysis as a string (unicode for py2.7).
 # Output: The most frequent letter in lower case as a string.
 
-# Bryukh's solution
-# import string
-
-# def checkio(text):
-    # return max(string.ascii_lowercase, key=lambda ch: text.lower().count(ch))
-
-# Veky's solution
-# map applies chr to range 97-123, which is basically the lower case characters in ASCII.
-# max can have a second parameter which allows you to sort the values in the first param.
-# checkio=lambda t:max(map(chr,range(97,123)),key=t.lower().count)
-
-# key in a max/min allows you to pick out values.
-# as an example, if you want to get the max even number from a range
-# subtract 1 to make it even
 import pytest
 
 from most_wanted_letter import most_wanted
