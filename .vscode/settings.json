@@ -7,5 +7,13 @@
         "**/.pytest_cache": true,
 
     },
-    "python.autoComplete.extraPaths": ["./src"],
+    "python.autoComplete.extraPaths": [
+        "./src"
+    ],
+    "python.testing.pytestArgs": [
+        "test"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
 }
