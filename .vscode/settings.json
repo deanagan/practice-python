@@ -8,7 +8,7 @@
 
     },
     "python.autoComplete.extraPaths": [
-        "./src"
+        "./**"
     ],
     "python.testing.pytestArgs": [
         "test"
