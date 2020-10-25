@@ -6,5 +6,6 @@
         "**/__pycache__": true,
         "**/.pytest_cache": true,
 
-    }
+    },
+    "python.autoComplete.extraPaths": ["./src"],
 }
