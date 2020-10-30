@@ -1,6 +1,5 @@
 
 
-
 def popular_words(text: str, words: list) -> dict:
-    # your code here
-    return None
+    split_text = text.lower().split()
+    return {word: split_text.count(word) for word in words}
