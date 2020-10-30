@@ -8,3 +8,4 @@ def test_between_markers():
     assert between_markers('No[/b] hi', '[b]', '[/b]') == 'No', 'No opened'
     assert between_markers('No [b]hi', '[b]', '[/b]') == 'hi', 'No close'
     assert between_markers('No hi', '[b]', '[/b]') == 'No hi', 'No markers at all'
+    assert between_markers('No <hi>', '>', '<') == '', 'Wrong direction'
