@@ -1,3 +1,6 @@
-def date_time(time: str) -> str:
+from datetime import datetime as dt
 
-    return "1 January 2000 year 0 hours 0 minutes"
+
+def date_time(time: str) -> str:
+    dtc = dt.strptime(time, "%d.%m.%Y %H:%M")
+    return f"{dtc.day} {dtc.strftime('%B')} {dtc.year} year {dtc.hour} hours {dtc.minute} minutes"
