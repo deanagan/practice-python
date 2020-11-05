@@ -8,3 +8,6 @@ def test_number_pairs():
 
     np = NumberPairs([30,30,30])
     assert np.count_divisibility_pairs(30) == 3
+
+    np = NumberPairs([338, 172, 7, 3, 29, 1])
+    assert np.count_divisibility_pairs(30) == 2
