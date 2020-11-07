@@ -12,4 +12,4 @@ from src.split_string import split_pairs
     ('', []),
 ])
 def test_split_string_by_pairs(input: str, expected: ResultType):
-    assert split_pairs(input) == expected
+    assert list(split_pairs(input)) == expected
