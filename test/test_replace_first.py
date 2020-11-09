@@ -10,3 +10,4 @@ from src.replace_first import replace_first_np
 ])
 def test_replace_first(input, expected):
     assert expected == replace_first_np(input)
+    assert expected == replace_first(input)
