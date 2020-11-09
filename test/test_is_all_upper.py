@@ -20,6 +20,7 @@ def test_is_all_upper(input, expected):
     ('all lower', False),
     ('mixed UPPER and lower', False),
     ('', True),
+    ('     ', True),
 ])
 def test_is_all_upper_or_empty(input, expected):
     assert expected == is_all_upper_or_empty(input)
