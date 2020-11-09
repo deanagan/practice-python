@@ -21,6 +21,7 @@ def test_is_all_upper(input, expected):
     ('mixed UPPER and lower', False),
     ('', True),
     ('     ', True),
+    ('123', True) # all upper or empty of upper case characters
 ])
 def test_is_all_upper_or_empty(input, expected):
     assert expected == is_all_upper_or_empty(input)
