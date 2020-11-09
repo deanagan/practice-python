@@ -1,6 +1,6 @@
 import pytest
 
-from src.replace_first import replace_first_np
+from src.replace_first import replace_first_np, replace_first
 
 
 @pytest.mark.parametrize('input, expected', [
