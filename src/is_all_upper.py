@@ -6,4 +6,4 @@ def is_all_upper(text: str) -> bool:
     return False if text.lower() == text else text == text.upper()
 
 def is_all_upper_or_empty(text: str) -> bool:
-    return not text or is_all_upper(text)
+    return not text.strip() or is_all_upper(text)
