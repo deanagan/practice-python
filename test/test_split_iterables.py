@@ -2,7 +2,7 @@ import pytest
 from typing import Iterable
 ResultType = Iterable[str]
 
-from src.split_string import split_pairs, chunking_by, split_list
+from src.split_iterables import split_pairs, chunking_by, split_list
 
 @pytest.mark.parametrize('input, expected', [
     ('abcd', ['ab', 'cd']),
@@ -25,7 +25,8 @@ def test_split_list(input, expected):
     assert split_list(input) == expected
 
 @pytest.mark.parametrize('items, size, expected', [
-    ([5, 4, 7, 3, 4, 5, 4], 3, [[5, 4, 7], [3, 4, 5], [4]])
+    ([5, 4, 7, 3, 4, 5, 4], 3, [[5, 4, 7], [3, 4, 5], [4]]),
+    ([3, 4, 5], 1, [[3], [4], [5]])
 
 ])
 def test_chunking_by(items, size, expected):
