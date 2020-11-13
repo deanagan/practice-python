@@ -3,12 +3,23 @@
 # Input: Iterable
 # Output: Iterable
 import pytest
-from src.sort_array_by_element_frequency import frequency_sort
+from src.sort_array_by_element_frequency import frequency_sort, asc_frequency_sort
+
+@pytest.mark.parametrize(('input, expected'), [
+    ([4, 6, 2, 2, 6, 4, 4, 4],  [4, 4, 4, 4, 6, 6, 2, 2]),
+    (['bob', 'bob', 'carl', 'alex', 'bob'],  ['bob', 'bob', 'bob', 'carl', 'alex']),
+    ([17, 99, 42],  [17, 99, 42]),
+    ([],  []),
+    ([1],  [1]),
+])
+def test_frequency_sort(input, expected):
+    assert list(frequency_sort(input)) == expected
 
 
-def test_frequency_sort():
-    assert list(frequency_sort([4, 6, 2, 2, 6, 4, 4, 4])) == [4, 4, 4, 4, 6, 6, 2, 2]
-    assert list(frequency_sort(['bob', 'bob', 'carl', 'alex', 'bob'])) == ['bob', 'bob', 'bob', 'carl', 'alex']
-    assert list(frequency_sort([17, 99, 42])) == [17, 99, 42]
-    assert list(frequency_sort([])) == []
-    assert list(frequency_sort([1])) == [1]
+@pytest.mark.parametrize(('input, expected, note'), [
+    ([1, 2, 3, 4, 5],  [1, 2, 3, 4, 5], "Already sorted"),
+    ([3, 4, 11, 13, 11, 4, 4, 7, 3],  [4, 4, 4, 3, 3, 11, 11, 7, 13], "Not sorted"),
+    ([99, 99, 55, 55, 21, 21, 10, 10],  [10, 10, 21, 21, 55, 55, 99, 99], "Reversed"),
+])
+def test_asc_frequency_sort(input, expected, note):
+    assert asc_frequency_sort(input) == expected, note
