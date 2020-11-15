@@ -17,24 +17,28 @@ class MatrixRunner:
                        0 <= (current_col + c) < cols]
 
     def longest_path(self):
-        cache, visited, lengths = {}, {}, []
-
+        longest = 0
         for row, col in product(range(self.n_rows), range(self.n_cols)):
-            lengths.append(self.depth_first_search((row, col), cache, visited))
+            visited = []
+            longest = max(self.depth_first_search((row, col), visited), longest)
 
-        return max(lengths)
+        return longest
 
-    def depth_first_search(self, location, cache, visited):
-        visited[location] = True
+    def valid_neighbors(self, location, visited):
         location_value = self.matrix[location[0]][location[1]]
-
         for n in self.neighbors(location, self.n_rows, self.n_cols):
-            n_value = self.matrix[n[0]][n[1]]
-            if location_value < n_value and n_value not in visited:
-                return 1 + self.depth_first_search(n, cache, visited)
+            if location_value < self.matrix[n[0]][n[1]] and n not in visited:
+                yield n
 
-        return 1
 
+    def depth_first_search(self, location, visited):
+        visited.append(location)
+
+        max_length = 1
+        for n in  self.valid_neighbors(location, visited):
+            max_length = max(max_length, 1 + self.depth_first_search(n, visited))
+
+        return max_length
 
 
 def longest_increasing_path(matrix: Matrix) -> int:
@@ -42,5 +46,3 @@ def longest_increasing_path(matrix: Matrix) -> int:
         return 0
     mr = MatrixRunner(matrix)
     return mr.longest_path()
-
-longest_increasing_path([])
