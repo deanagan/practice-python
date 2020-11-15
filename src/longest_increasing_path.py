@@ -19,24 +19,22 @@ class MatrixRunner:
     def longest_path(self):
         longest = 0
         for row, col in product(range(self.n_rows), range(self.n_cols)):
-            visited = []
-            longest = max(self.depth_first_search((row, col), visited), longest)
+            longest = max(self.depth_first_search((row, col)), longest)
 
         return longest
 
-    def valid_neighbors(self, location, visited):
+    def valid_neighbors(self, location):
         location_value = self.matrix[location[0]][location[1]]
         for n in self.neighbors(location, self.n_rows, self.n_cols):
-            if location_value < self.matrix[n[0]][n[1]] and n not in visited:
+            if location_value < self.matrix[n[0]][n[1]]:
                 yield n
 
 
-    def depth_first_search(self, location, visited):
-        visited.append(location)
+    def depth_first_search(self, location):
 
         max_length = 1
-        for n in  self.valid_neighbors(location, visited):
-            max_length = max(max_length, 1 + self.depth_first_search(n, visited))
+        for n in self.valid_neighbors(location):
+            max_length = max(max_length, 1 + self.depth_first_search(n))
 
         return max_length
 
