@@ -38,6 +38,9 @@ class MatrixRunner:
 
 
 def longest_increasing_path(matrix: Matrix) -> int:
-
+    if not matrix:
+        return 0
     mr = MatrixRunner(matrix)
     return mr.longest_path()
+
+longest_increasing_path([])
