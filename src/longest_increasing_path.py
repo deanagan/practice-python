@@ -9,6 +9,7 @@ class MatrixRunner:
         self.matrix = matrix
         self.n_rows = len(matrix)
         self.n_cols = len(matrix[0])
+        self.cache = {}
 
     def neighbors(self, location, rows, cols):
         current_row, current_col = location
@@ -31,11 +32,13 @@ class MatrixRunner:
 
 
     def depth_first_search(self, location):
-
+        if location in self.cache:
+            return self.cache[location]
         max_length = 1
         for n in self.valid_neighbors(location):
             max_length = max(max_length, 1 + self.depth_first_search(n))
 
+        self.cache[location] = max_length
         return max_length
 
 
