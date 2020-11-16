@@ -1,6 +1,5 @@
-from itertools import product, takewhile
+from itertools import product
 from typing import List, Tuple
-from collections import deque
 
 
 Matrix = List[List[int]]
