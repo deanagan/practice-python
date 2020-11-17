@@ -1,5 +1,5 @@
 import pytest
-from src.date_time_converter import date_time
+from src.date_time_converter import date_time, time_converter
 
 @pytest.mark.parametrize("input, expected, note",
     [("01.01.2000 00:00", "1 January 2000 year 0 hours 0 minutes", "Somebody was born") ,
@@ -8,3 +8,14 @@ from src.date_time_converter import date_time
      ("11.04.1812 01:01", "11 April 1812 year 1 hour 1 minute", "Not plural")])
 def test_date_time_converter(input, expected, note):
     assert date_time(input) == expected, note
+
+
+
+@pytest.mark.parametrize("input, expected",
+    [
+        ('12:30 p.m.', '12:30'),
+        ('9:00 a.m.', '09:00'),
+        ('11:15 p.m.', '23:15'),
+     ])
+def test_date_time_converter(input, expected):
+    assert time_converter(input) == expected
