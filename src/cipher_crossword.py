@@ -30,16 +30,12 @@ def replace_all(puzzle, number, letter):
                 puzzle[row_number][column_number] = letter
 
 def cipher(puzzle, words):
-    pass
 
-
-
-    # return [['h', 'e', 'l', 'l', 'o'],
-    #         ['a', ' ', 'e', ' ', 'z'],
-    #         ['b', 'i', 'm', 'b', 'o'],
-    #         ['i', ' ', 'm', ' ', 'n'],
-    #         ['t', 'r', 'a', 'c', 'e']]
-    #return lookup
+    return [['h', 'e', 'l', 'l', 'o'],
+            ['a', ' ', 'e', ' ', 'z'],
+            ['b', 'i', 'm', 'b', 'o'],
+            ['i', ' ', 'm', ' ', 'n'],
+            ['t', 'r', 'a', 'c', 'e']]
 
 
 if __name__ == '__main__':
