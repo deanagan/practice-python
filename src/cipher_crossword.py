@@ -8,7 +8,7 @@ def entries_can_match_word(puzzle, words, entries):
             return False
     return True
 
-def do_all_words_exist_in_puzzle(puzzle, words):
+def all_words_exist_in_puzzle(puzzle, words):
 
     if any(isinstance(e, int) for e in chain.from_iterable(puzzle)):
         return False
@@ -20,24 +20,24 @@ def do_all_words_exist_in_puzzle(puzzle, words):
 
     return all(word in found_words for word in words)
 
-def replace_all(puzzle,/, dest, replacement):
+def replace_all(puzzle, *, target, replacement):
     for row_number, row_elements in enumerate(puzzle):
         for column_number, value in enumerate(row_elements):
-            if dest == value:
+            if target == value:
                 puzzle[row_number][column_number] = replacement
 
 
-def potential_solution(puzzle, words):
+def any_solution(puzzle, words):
     columns = ([i[t] for i in puzzle] for t in range(len(puzzle[0])))
     return entries_can_match_word(puzzle, words, columns) and entries_can_match_word(puzzle, words, puzzle)
 
 
 def solve(puzzle, words):
 
-    if do_all_words_exist_in_puzzle(puzzle, words):
+    if all_words_exist_in_puzzle(puzzle, words):
         return True
 
-    if not potential_solution(puzzle, words):
+    if not any_solution(puzzle, words):
         return False
 
     letters = (ch for ch in set(''.join(words)) if ch not in chain.from_iterable(puzzle))
@@ -45,12 +45,11 @@ def solve(puzzle, words):
 
     for number in numbers:
         for letter in letters:
-
-            replace_all(puzzle, number, letter)
-            if potential_solution(puzzle, words) and solve(puzzle, words):
+            replace_all(puzzle, target=number, replacement=letter)
+            if any_solution(puzzle, words) and solve(puzzle, words):
                 return True
             else:
-                replace_all(puzzle, letter, number) # backtrack
+                replace_all(puzzle, target=letter, replacement=number) # backtrack
     return False
 
 
