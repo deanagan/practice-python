@@ -1,6 +1,6 @@
 import pytest
 
-from src.cipher_crossword import cipher, all_rows_can_match_word, all_columns_can_match_word
+from src.cipher_crossword import cipher, entries_can_match_word
 
 @pytest.mark.parametrize(('puzzle', 'words', 'expected'), [
     ([
@@ -90,48 +90,5 @@ def test_cipher_crossword(puzzle, words, expected):
     ),
 
 ])
-def test_all_rows_can_match_word(puzzle, words, expected, note):
-    assert all_rows_can_match_word(puzzle, words) == expected, note
-
-
-
-@pytest.mark.parametrize(('puzzle, words, expected, note'), [
-    (
-        [
-            [21, 6, 25, 25, 17],
-            [14, 0, 6, 0, 2],
-            [1, 11, 16, 1, 17],
-            [11, 0, 16, 0, 5],
-            [26, 3, 14, 20, 6]
-        ], ['hello', 'habit', 'lemma', 'ozone', 'bimbo', 'trace'], True, "All digits"
-    ),
-    (
-        [
-            ['h', 'e', 'l', 'l', 'o'],
-            ['a', ' ', 'e', ' ', 'z'],
-            ['b', 'i', 'm', 'b', 'o'],
-            ['i', ' ', 'm', ' ', 'n'],
-            ['t', 'r', 'a', 'c', 'e']
-        ], ['hello', 'habit', 'lemma', 'ozone', 'bimbo', 'trace'], True, "Has all words in column"
-    ),
-    (
-        [
-            ['h', 'e', 'l', 'l', 2],
-            [ 7, ' ', 'e', ' ', 'z'],
-            ['b', 'i', 'm', 'b', 2],
-            ['i', ' ', 'm', ' ', 8],
-            ['t', 9, 'a', 7, 'e']
-        ], ['hello', 'habit', 'lemma', 'ozone', 'bimbo', 'trace'], True, "Mix of words and digits"
-    ),
-    (
-        [
-            ['h', 'e', 'l', 'l', 'o'],
-            ['a', ' ', 'e', ' ', 'q'],
-            ['b', 'i', 'm', 'b', 'o'],
-            ['s', ' ', 'm', ' ', 'n'],
-            ['t',  9,  'a',  7,  'e']
-        ], ['hello', 'habit', 'lemma', 'ozone', 'bimbo', 'trace'], False, "Mix of words and digits"
-    ),
-])
-def test_all_columns_can_match_word(puzzle, words, expected, note):
-    assert all_columns_can_match_word(puzzle, words) == expected, note
+def test_any_entry_can_match_word(puzzle, words, expected, note):
+    assert entries_can_match_word(puzzle, words, puzzle) == expected, note
