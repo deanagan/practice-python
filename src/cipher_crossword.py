@@ -1,19 +1,10 @@
 from itertools import chain
 
-def all_rows_can_match_word(puzzle, words):
-    for row in puzzle:
-        if ' ' in row:
+def entries_can_match_word(puzzle, words, entries):
+    for entry in entries:
+        if ' ' in entry:
             continue
-        if not any(all(a==b or isinstance(a,int) for a,b in zip(row, word)) for word in words):
-            return False
-    return True
-
-def all_columns_can_match_word(puzzle, words):
-    columns = ([i[t] for i in puzzle] for t in range(len(puzzle[0])))
-    for column in columns:
-        if ' ' in column:
-            continue
-        if not any(all(a==b or isinstance(a,int) for a,b in zip(column, word)) for word in words):
+        if not any(all(a==b or isinstance(a,int) for a,b in zip(entry, word)) for word in words):
             return False
     return True
 
@@ -37,7 +28,8 @@ def replace_all(puzzle,/, dest, replacement):
 
 
 def potential_solution(puzzle, words):
-    return all_columns_can_match_word(puzzle, words) and all_rows_can_match_word(puzzle, words)
+    columns = ([i[t] for i in puzzle] for t in range(len(puzzle[0])))
+    return entries_can_match_word(puzzle, words, columns) and entries_can_match_word(puzzle, words, puzzle)
 
 
 def solve(puzzle, words):
