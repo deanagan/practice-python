@@ -54,7 +54,7 @@ def solve(puzzle, words):
 
 
 def cipher(puzzle, words):
-    replace_all(puzzle, dest = 0, replacement=' ')
+    replace_all(puzzle, target = 0, replacement=' ')
     return puzzle if solve(puzzle, words) else []
 
 if __name__ == '__main__':
