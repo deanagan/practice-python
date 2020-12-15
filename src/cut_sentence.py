@@ -2,7 +2,9 @@ from itertools import takewhile as tw
 
 
 def cut_sentence(line: str, length: int) -> str:
-    return ' '.join(tw(lambda word: word in line.split(), line[:length].split())) + ('...' if len(line) > length else '')
+    cut = ' '.join(tw(lambda word: word in line.split(), line[:length].split()))
+    return cut + '...' if len(line) > length else cut
+
 
 
 if __name__ == '__main__':
