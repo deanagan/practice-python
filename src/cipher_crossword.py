@@ -76,5 +76,3 @@ if __name__ == '__main__':
                 ['b', 'i', 'm', 'b', 'o'],
                 ['i', ' ', 'm', ' ', 'n'],
                 ['t', 'r', 'a', 'c', 'e']]
-
-    #assert(result == expected)
