@@ -1,9 +1,8 @@
 from itertools import takewhile
 
 class Solution:
-    def my_atoi(self, s: str) -> int:
-        if not s.strip():
-            return 0
+    @staticmethod
+    def my_atoi(s: str) -> int:
 
         e = ''.join(n for _,n in takewhile( lambda ch: ch[1].isnumeric() or (ch[1] in ('+', '-') and ch[0] == 0), enumerate(s.lstrip()) ))
 
