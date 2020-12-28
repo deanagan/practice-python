@@ -2,35 +2,29 @@ from typing import List
 
 class Solution:
     def three_sum(self, nums: List[int]) -> List[List[int]]:
-        # Algorithm:
-        # we traverse with 2 pointers to the left and 1 to the right.
-        # we keep left first item on hold while second item traverses toward
-        # the direction of the right pointer. We keep going until they hit the same index,
-        # gathering triplets along the way. When we hit the same index, we move
-        # the first item next.
-        if len(nums) < 3:
-            return []
-
+        result = []
         nums.sort()
+        lookup = { k:v for v,k in enumerate(nums) }
 
-        result = set()
+        for ia, a in enumerate(nums):
+            if a > 0:
+                break
 
-        for i, a in enumerate(nums):
-            b_index = i + 1
-            c_index = len(nums) - 1
-            while b_index < c_index:
-                b,c = nums[b_index], nums[c_index]
-                total = a + b + c
-                if total == 0:
-                    result.add((a,b,c))
-                    b_index += 1
-                    c_index -= 1
-                elif total > 0:
-                    c_index -= 1
-                else: # total < 0:
-                    b_index += 1
+            if ia > 0 and a == nums[ia - 1]:
+                continue
 
-        return [list(l) for l in result]
+            for ib,b in enumerate(nums[ia + 1:], start = ia + 1):
+                if b == nums[ib-1] and ib - ia > 1:
+                    continue
+                pair_sum = a + b
+
+                if pair_sum > 0:
+                    break
+
+                if -pair_sum in lookup and lookup[-pair_sum] > ib:
+                    result.append([a, b,  nums[lookup[-pair_sum]]])
+
+        return result
 
 if __name__ == '__main__':
     sut = Solution()
