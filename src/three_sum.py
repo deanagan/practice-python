@@ -10,15 +10,16 @@ class Solution:
         # the first item next.
         if len(nums) < 3:
             return []
-        snums = sorted(nums)
+
+        nums.sort()
 
         result = set()
 
-        for i, a in enumerate(snums):
+        for i, a in enumerate(nums):
             b_index = i + 1
-            c_index = len(snums) - 1
+            c_index = len(nums) - 1
             while b_index < c_index:
-                b,c = snums[b_index], snums[c_index]
+                b,c = nums[b_index], nums[c_index]
                 total = a + b + c
                 if total == 0:
                     result.add((a,b,c))
