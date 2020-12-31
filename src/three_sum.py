@@ -32,3 +32,28 @@ class Solution:
                     result.append([a, b, nums[cached_index]])
 
         return result
+
+    def three_sum_closest(self, nums: List[int], target: int) -> int:
+
+        difference = float('inf')
+        nums.sort()
+
+        for ia, a in enumerate(nums):
+            ib, ic = ia + 1, len(nums) - 1
+            while ic > ib:
+                total = a + nums[ib] + nums[ic]
+                if abs(target - total) < abs(difference):
+                    difference = target - total
+                # we adjust ic or ib based on whether our total is bigger or smaller
+                # vs the target. If it is smaller, we increment ib, otherwise, we reduce ic.
+                if total < target:
+                    ib += 1
+                else:
+                    ic -= 1
+
+                # if we already match total, we break
+                if total == target:
+                    break
+
+
+        return target - difference
