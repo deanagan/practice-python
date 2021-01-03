@@ -1,5 +1,5 @@
 
-def are_brackets_valid(expression) -> bool:
+def are_brackets_valid(expression: str) -> bool:
 
     stack = ['']
     brackets = { '{': '}', '[': ']', '(': ')'}

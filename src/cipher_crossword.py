@@ -52,8 +52,9 @@ def solve(puzzle, words):
                 replace_all(puzzle, target=letter, replacement=number) # backtrack
     return False
 
+from typing import List
 
-def cipher(puzzle, words):
+def cipher(puzzle: List[List[str]], words: List[str]):
     replace_all(puzzle, target = 0, replacement=' ')
     return puzzle if solve(puzzle, words) else []
 
