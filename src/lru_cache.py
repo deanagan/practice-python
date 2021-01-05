@@ -4,7 +4,7 @@ class LRUCache:
 
     def __init__(self, capacity: int):
         self._capacity = capacity
-        self._usage = deque(maxlen=2)
+        self._usage = deque(maxlen=capacity)
         self._cache = {}
 
     def get(self, key: int) -> int:
