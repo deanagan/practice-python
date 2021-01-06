@@ -3,8 +3,8 @@ from typing import List, Generator
 
 class Solution:
 
-    @classmethod
-    def paired(cls, height) -> Generator:
+    @staticmethod
+    def paired(height) -> Generator:
         left = 0
         right = len(height) - 1
         while left != right:
