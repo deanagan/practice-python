@@ -2,7 +2,8 @@
 from itertools import cycle
 
 class ZigZag:
-    def convert(self, s: str, num_rows: int) -> str:
+    @staticmethod
+    def convert(s: str, num_rows: int) -> str:
         row_strs = {}
         index_gen = cycle([*list(range(num_rows)), *list(range(num_rows - 2,0,-1))])
         for ch in s:
