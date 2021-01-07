@@ -33,7 +33,8 @@ class Solution:
 
         return result
 
-    def three_sum_closest(self, nums: List[int], target: int) -> int:
+    @staticmethod
+    def three_sum_closest(nums: List[int], target: int) -> int:
 
         difference = float('inf')
         nums.sort()
