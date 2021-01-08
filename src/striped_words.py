@@ -5,7 +5,7 @@ CONSONANTS = list("BCDFGHJKLMNPQRSTVWXZ")
 from itertools import islice
 import re
 
-def count_stripes(text):
+def count_stripes(text: str):
 
     # split text using regular expression, and splitting according to punctuation.
     # we could have used split but this method only takes 1 delimeter, so we'll use re.
