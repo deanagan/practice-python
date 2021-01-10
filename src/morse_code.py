@@ -15,7 +15,3 @@ MORSE = {'.-':    'a', '-...':  'b', '-.-.':  'c',
 
 def morse_decoder(code: str) -> str:
     return ''.join(MORSE.get(ch, ' ') for ch in code.split(' ')).replace('  ', ' ').capitalize()
-
-
-if __name__ == '__main__':
-    print(morse_decoder("... --- -- .   - . -..- -")) == "Some text"
