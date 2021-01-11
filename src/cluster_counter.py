@@ -1,5 +1,5 @@
 
-from typing import List, Tuple
+from typing import List, Generator
 ClusterMap = List[List[int]]
 
 class Node:
@@ -13,7 +13,7 @@ class Node:
         col_dist = abs(self._y - y)
         return row_dist < 2 and col_dist < 2
 
-def get_next_valid_node(clusters: ClusterMap) -> Tuple[int, int, int]:
+def get_next_valid_node(clusters: ClusterMap) -> Generator:
     yield from ((row, col, n) for row, row_elements in enumerate(clusters)
                     for col, n in enumerate(row_elements) if n == 1)
 
