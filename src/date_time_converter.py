@@ -8,8 +8,8 @@ def date_time(time: str) -> str:
     return f"{dtc.day} {dtc.strftime('%B')} {dtc.year} year {dtc.hour} {hour} {dtc.minute} {minute}"
 
 ''' Converts 12h time format to 24h format '''
-def time_converter(time):
-    def adjust_hour(hour, fmt):
+def time_converter(time: str):
+    def adjust_hour(hour: str, fmt: str):
         hour_num = int(hour)
         return {
             'pm': lambda: str(hour_num + 12) if hour_num != 12 else hour,
